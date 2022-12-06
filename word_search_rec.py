@@ -5,32 +5,33 @@ class Solution:
         
         
         def run(row,col,pos,temp):
-            print(temp, pos)
+            print(temp,word, pos)
             if temp == word:
+                print("hellos")
                 return True
-            
-            if row < height-1 and word[pos+1]== board[row+1][col]:
-                temp += board[row+1][col]
-                run(row +1 ,col,pos +1,temp)
-            elif col < width-1  and word[pos+1]== board[row][col+1]:
-                temp += board[row][col+1]
-                run(row ,col+1,pos +1,temp)
-            elif row > 0 and word[pos+1]== board[row-1][col]:
-                temp += board[row-1][col]
-                run(row -1 ,col,pos +1,temp)
-            elif col > 0 and word[pos+1]== board[row][col-1]:
-                temp += board[row][col-1]
-                run(row  ,col-1,pos +1,temp)                      
-            
+            else:
+                if row < height-1 and word[pos+1]== board[row+1][col]:
+                    temp += board[row+1][col]
+                    run(row +1 ,col,pos +1,temp)
+                elif col < width-1  and word[pos+1]== board[row][col+1]:
+                    temp += board[row][col+1]
+                    run(row ,col+1,pos +1,temp)
+                elif row > 0 and word[pos+1]== board[row-1][col]:
+                    temp += board[row-1][col]
+                    run(row -1 ,col,pos +1,temp)
+                elif col > 0 and word[pos+1]== board[row][col-1]:
+                    temp += board[row][col-1]
+                    run(row  ,col-1,pos +1,temp)                      
         
         
         for r in range(len(board)):
             for c in range(len(board[0])):
                 if word[0] == board[r][c]:
-                    run(r,c,0,board[r][c])
+                    if(run(r,c,0,board[r][c])):
+                        return True
 
                     
-            return False
+            
         
         
         
